@@ -42,6 +42,14 @@ export default {
         /* module options */
       },
     ],
+    [
+      'nuxt-supabase',
+      {
+        supabaseUrl: 'https://bggvnnqpmdlupewmvptv.supabase.co',
+        supabaseKey:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnZ3ZubnFwbWRsdXBld212cHR2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY1MzgxODQzOCwiZXhwIjoxOTY5Mzk0NDM4fQ.KHq8FQ-IowNbMs_bP-m9YrY9vEmvtg6X7zpEEvRTg3w',
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -1,11 +1,9 @@
 <template>
   <div class="w-screen h-screen bg-amber-500">
-<!--    <Map/>-->
     <client-only>
       <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker :lat-lng="[55.9464418,8.1277591]"></l-marker>
-        <l-marker :lat-lng="[50.075539,14.437800]"></l-marker>
+        <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]"></l-marker>
         <l-control-zoom position="bottomright"  ></l-control-zoom>
       </l-map>
     </client-only>
@@ -23,11 +21,23 @@ export default Vue.extend({
   name: 'IndexPage',
   data() {
     return {
+      faces: [] as any,
       zoom: 3,
       center: [27.413220, -1.219482],
       url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
       attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     }
+  },
+  mounted() {
+    this.getEvents()
+  },
+  methods: {
+    async getEvents() {
+      await this.$supabase.from("faces").select("*")
+        .then(res => {
+          this.faces = res.data
+      }).then(null, err => console.log('err: ', err))
+    },
   },
 })
 </script>
