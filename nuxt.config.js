@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'faces',
+    title: 'United Faces Of Odense',
     htmlAttrs: {
       lang: 'en',
     },
