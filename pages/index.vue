@@ -2,9 +2,9 @@
   <div class="w-screen h-screen bg-amber-500">
     <client-only>
       <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}">
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]"></l-marker>
-        <l-control-zoom position="bottomright"  ></l-control-zoom>
+        <l-tile-layer :url="url" :attribution="attribution"/>
+        <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]"/>
+        <l-control-zoom position="bottomright"/>
       </l-map>
     </client-only>
   </div>
@@ -28,13 +28,14 @@ export default Vue.extend({
       attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     }
   },
-  mounted() {
+  created() {
     this.getEvents()
   },
   methods: {
     async getEvents() {
       await this.$supabase.from("faces").select("*")
         .then(res => {
+          console.log(res)
           this.faces = res.data
       }).then(null, err => console.log('err: ', err))
     },
