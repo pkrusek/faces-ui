@@ -25,7 +25,7 @@ export default Vue.extend({
       zoom: 3,
       center: [27.413220, -1.219482],
       url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
-      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> | &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> | &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     }
   },
   created() {
@@ -35,7 +35,6 @@ export default Vue.extend({
     async getEvents() {
       await this.$supabase.from("faces").select("*")
         .then(res => {
-          console.log(res)
           this.faces = res.data
       }).then(null, err => console.log('err: ', err))
     },
