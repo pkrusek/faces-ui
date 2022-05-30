@@ -37,7 +37,7 @@
           </div>
           <!-- Secondary Navbar items -->
           <div class="hidden md:flex items-center space-x-3 ">
-            <a href="" class="py-2 px-2 font-light text-gray-400 transition duration-300">Contact</a>
+            <a href="https://dagmarstudio.dk" target="_blank" class="py-2 px-2 font-light text-gray-400 transition duration-300">Contact</a>
           </div>
           <div class="md:hidden flex items-center">
             <button class="outline-none mobile-menu-button">
