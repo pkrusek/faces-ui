@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black flex flex-col h-screen">
-    <nav class="bg-gray-900 shadow-lg shadow-gray-900 z-10">
+    <nav class="bg-zinc-800 shadow-lg shadow-neutral-900 z-10">
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
           <div class="flex space-x-7">
@@ -13,14 +13,21 @@
             </div>
             <!-- Primary Navbar items -->
             <div class="hidden md:flex items-center space-x-1">
+
+<!--              <script type="text/javascript">-->
+<!--                <![CDATA[-->
+
 <!--              {[-->
 <!--                ['Home', '/dashboard'],-->
 <!--                ['Team', '/team'],-->
 <!--                ['Projects', '/projects'],-->
 <!--                ['Reports', '/reports'],-->
 <!--                ].map(([title, url]) => (-->
+<!--                  console.log(url)-->
 <!--                  <a href={url} class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">{title}</a>-->
 <!--              ))}-->
+<!--                ]]>-->
+<!--              </script>-->
               <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Project</a>
               <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Exhibition</a>
               <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Author</a>
@@ -53,7 +60,7 @@
     </nav>
     <main class="w-screen flex flex-grow bg-black z-0">
       <client-only>
-        <l-map :zoom="zoom" :center="center" :options="{zoomControl: false}">
+        <l-map :center="center" :options="{zoomControl: false}" :max-bounds="[[-90, -260],[90, 260]]" :max-bounds-viscosity="1.0" :min-zoom="3" max-zoom=18 :zoom="zoom">
           <l-tile-layer :url="url" :attribution="attribution"/>
           <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]"/>
           <l-control-zoom position="bottomright"/>
@@ -66,21 +73,24 @@
 <script lang="ts">
 import Vue from 'vue'
 
-if (process.browser) {
-  require('leaflet')
-}
-
 export default Vue.extend({
   name: 'IndexPage',
   data() {
     return {
       faces: [] as any,
-      zoom: 3,
+      // navigation: [['1, '1'], ['2','2']],
+      zoom: 2,
       center: [27.413220, -1.219482],
+      // url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
       attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> | &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> | &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     }
   },
+  // computed: {
+  //   getIcon () {
+  //     return getIcon()
+  //   }
+  // },
   created() {
     this.getEvents()
   },

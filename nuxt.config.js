@@ -18,7 +18,7 @@ export default {
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/leaflet-plugin.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -66,5 +66,10 @@ export default {
         autoprefixer: {},
       },
     },
+  },
+
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0', // default: localhost
   },
 }
