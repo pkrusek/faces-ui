@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>Faces</h1>
+    <h1 class="text-3xl font-bold underline">
+      Tailwind test
+    </h1>
     <div v-for="face in faces" :key="face.id">
       {{face.name}}
     </div>
