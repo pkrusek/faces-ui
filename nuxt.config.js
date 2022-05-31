@@ -41,13 +41,6 @@ export default {
     //     /* module options */
     //   },
     // ],
-    [
-      'nuxt-supabase',
-      {
-        supabaseUrl: process.env.SUPABASE_URL,
-        supabaseKey: process.env.SUPABASE_KEY,
-      },
-    ],
     '@nuxtjs/dotenv',
   ],
 
