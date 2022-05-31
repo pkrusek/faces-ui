@@ -35,6 +35,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // [
+    //   'nuxt-leaflet',
+    //   {
+    //     /* module options */
+    //   },
+    // ],
+    [
+      'nuxt-supabase',
+      {
+        supabaseUrl: process.env.SUPABASE_URL,
+        supabaseKey: process.env.SUPABASE_KEY,
+      },
+    ],
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
