@@ -105,3 +105,5 @@ export default {
   },
 }
 </script>
+
+<style src="leaflet/dist/leaflet.css"></style>
