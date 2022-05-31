@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'United Faces Of Odense',
+    title: 'faces',
     htmlAttrs: {
       lang: 'en',
     },
@@ -15,41 +15,26 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css'],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/leaflet-plugin.client.js'],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxt/postcss8',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    [
-      'nuxt-leaflet',
-      {
-        /* module options */
-      },
-    ],
-    [
-      'nuxt-supabase',
-      {
-        supabaseUrl: process.env.SUPABASE_URL,
-        supabaseKey: process.env.SUPABASE_KEY,
-      },
-    ],
-    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -59,17 +44,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    postcss: {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {},
-      },
-    },
-  },
-
-  server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost
-  },
+  build: {},
 }
