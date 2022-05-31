@@ -12,8 +12,14 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    css: ['http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css'],
   },
+
+  link: [
+    {
+      rel: 'stylesheet',
+      href: 'https://unpkg.com/leaflet/dist/leaflet.css',
+    },
+  ],
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/main.css'],
