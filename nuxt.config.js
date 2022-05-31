@@ -35,12 +35,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // [
-    //   'nuxt-leaflet',
-    //   {
-    //     /* module options */
-    //   },
-    // ],
+    [
+      'nuxt-leaflet',
+      {
+        /* module options */
+      },
+    ],
     [
       '@nuxtjs/firebase',
       {
