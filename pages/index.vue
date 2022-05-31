@@ -92,15 +92,15 @@ export default Vue.extend({
   //   }
   // },
   created() {
-    this.getEvents()
+    // this.getEvents()
   },
   methods: {
-    async getEvents() {
-      await this.$supabase.from("faces").select("*")
-        .then(res => {
-          this.faces = res.data
-      }).then(null, err => console.log('err: ', err))
-    },
+    // async getEvents() {
+    //   await this.$supabase.from("faces").select("*")
+    //     .then(res => {
+    //       this.faces = res.data
+    //   }).then(null, err => console.log('err: ', err))
+    // },
   },
 })
 </script>
