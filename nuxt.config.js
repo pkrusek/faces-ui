@@ -60,12 +60,17 @@ export default {
     ],
     '@nuxtjs/dotenv',
     '@nuxt/postcss8',
+    '@nuxtjs/cloudinary',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  cloudinary: {
+    cloudName: 'pavel-krusek',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -76,5 +81,10 @@ export default {
         autoprefixer: {},
       },
     },
+  },
+
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0', // default: localhost
   },
 }
