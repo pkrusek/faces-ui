@@ -6,35 +6,19 @@
           <div class="flex space-x-7">
             <!-- Website Logo -->
             <div>
-              <a
-                href="#"
+              <div
                 class="flex items-center py-4 px-2">
-                <img src="logo.png" alt="Logo" class="h-8 w-8 mr-2" />
+                <img src="@/assets/images/test.jpeg" alt="Logo" class="h-8 w-8 mr-2" />
                 <span class="font-semibold text-amber-600 text-lg">Faces Of Odense</span>
-              </a>
+              </div>
             </div>
             <!-- Primary Navbar items -->
             <div class="hidden md:flex items-center space-x-1">
-
-              <!--              <script type="text/javascript">-->
-              <!--                <![CDATA[-->
-
-              <!--              {[-->
-              <!--                ['Home', '/dashboard'],-->
-              <!--                ['Team', '/team'],-->
-              <!--                ['Projects', '/projects'],-->
-              <!--                ['Reports', '/reports'],-->
-              <!--                ].map(([title, url]) => (-->
-              <!--                  console.log(url)-->
-              <!--                  <a href={url} class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">{title}</a>-->
-              <!--              ))}-->
-              <!--                ]]>-->
-              <!--              </script>-->
-              <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Project</a>
-              <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Exhibition</a>
-              <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Author</a>
-              <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Press</a>
-              <a href="" class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300">Guestbook</a>
+              <span class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300 cursor-pointer">Project</span>
+              <span class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300 cursor-pointer">Exhibition</span>
+              <span class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300 cursor-pointer">Author</span>
+              <span class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300 cursor-pointer">Press</span>
+              <span class="py-4 px-2 text-amber-600 font-light hover:text-amber-500 transition duration-300 cursor-pointer">Guestbook</span>
             </div>
           </div>
           <!-- Secondary Navbar items -->
@@ -62,30 +46,45 @@
     </nav>
     <main class="w-screen flex flex-grow bg-black z-0">
       <client-only>
-        <l-map :center="center" :options="{zoomControl: false}" :max-bounds="[[-90, -260],[90, 260]]" :max-bounds-viscosity="1.0" :min-zoom="3" max-zoom=18 :zoom="zoom">
+<!--        <l-map :center="center" :options="{zoomControl: false}" :max-bounds="[[-90, -260],[90, 260]]" :max-bounds-viscosity="1.0" :min-zoom="3" max-zoom=18 :zoom="zoom" class="md:flex">-->
+<!--          <l-tile-layer :url="url" :attribution="attribution"/>-->
+<!--          <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]" @click="showFace(face)"/>-->
+<!--          <l-control-zoom position="bottomright"/>-->
+<!--        </l-map>-->
+        <l-map :center="center" :options="{zoomControl: false}" :max-bounds="[[-90, -260],[90, 260]]" :max-bounds-viscosity="1.0" :min-zoom="3" max-zoom=18 :zoom="zoom" class="md:flex">
           <l-tile-layer :url="url" :attribution="attribution"/>
-          <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]"/>
+          <l-marker v-for="(face, index) in faces" :key="index" :lat-lng="[face.lat, face.lng]" @click="showFace(face)"/>
           <l-control-zoom position="bottomright"/>
         </l-map>
       </client-only>
     </main>
+    <CommonModal :showing="showingFace" @update:showing="showingFace = $event">
+      <FaceModal :face="face"/>
+    </CommonModal>
   </div>
 </template>
 
 <script>
 
+import CommonModal from "~/components/CommonModal";
+import FaceModal from "~/components/FaceModal";
+
 export default {
   name: 'IndexPage',
+  components: {FaceModal, CommonModal},
   data() {
     return {
       faces: [],
+      face: {},
+      showingFace: false,
       zoom: 3,
       center: [27.413220, -1.219482],
+      // url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
       attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> | &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> | &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     }
   },
-  created() {
+  mounted() {
     this.getFaces()
   },
   methods: {
@@ -102,8 +101,12 @@ export default {
         throw new Error('Cannot load data from database.')
       }
     },
+    showFace(face) {
+      this.showingFace = true
+      this.face = face
+    },
   },
 }
 </script>
 
-<style src="leaflet/dist/leaflet.css"></style>
+<style src="leaflet/dist/leaflet.css"/>
