@@ -8,26 +8,26 @@
     leave-to-class="opacity-0"
   >
     <div v-show="showing" class="fixed inset-0 z-10 overflow-y-auto">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+      <div class="flex items-end justify-center pt-4 px-4 pb-20 text-center">
 
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-<!--          <button-->
-<!--            v-if="showClose"-->
-<!--            aria-label="close"-->
-<!--            class="absolute z-50 bg-white rounded-full py-2 px-2 top-3 right-3 cursor-pointer focus:outline-none"-->
-<!--            @click.prevent="close()"-->
-<!--          >-->
-<!--            <svg-->
-<!--class="h-4 w-4 text-gray-600"-->
-<!--                 xmlns="http://www.w3.org/2000/svg"-->
-<!--                 fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>-->
-<!--            </svg>-->
-<!--          </button>-->
+          <button
+            v-if="showClose"
+            aria-label="close"
+            class="absolute z-50 bg-white rounded-full py-2 px-2 top-3 right-3 cursor-pointer focus:outline-none"
+            @click.prevent="close()"
+          >
+            <svg
+class="h-4 w-4 text-gray-600"
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
           <div class="absolute inset-0 bg-gray-800 opacity-70" @click.prevent="close()"></div>
         </div>
 
-        <div class="m-8 inline-block align-middle w-full overflow-hidden max-w-2xl bg-white rounded-lg shadow-xl transform transition-all">
+        <div class="m-8 inline-block align-middle w-full overflow-hidden max-w-2xl bg-white rounded-lg shadow-xl transform transition-all min-h-full">
           <slot></slot>
         </div>
       </div>
